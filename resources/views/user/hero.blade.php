@@ -13,7 +13,7 @@
                         <ul>
 
                             @foreach($data as $category)
-                <li><a href="#">{{ $category->category_name }}</a></li>
+                <li><a href="{{ url('/') }}">{{ $category->category_name }}</a></li>
             @endforeach
                         </ul>
                     </div>
@@ -45,7 +45,7 @@
                             <span>FRUIT FRESH</span>
                             <h2>Vegetable <br />100% Organic</h2>
                             <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
+                            <a href="{{ url('/') }}" class="primary-btn">SHOP NOW</a>
                         </div>
                     </div>
                 </div>
