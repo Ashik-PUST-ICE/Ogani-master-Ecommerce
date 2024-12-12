@@ -19,8 +19,8 @@
                 <div>English</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
+                    {{-- <li><a href="#">Bangla</a></li> --}}
+                    <li><a href="{{ url('/') }}">Bangla</a></li>
                 </ul>
             </div>
             <div class="header__top__right__auth" >
@@ -68,7 +68,7 @@
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li><i class="fa fa-envelope"></i>ashik.200607@s.pust.ac.bd</li>
                 <li>Free Shipping for all Order of $99</li>
             </ul>
         </div>

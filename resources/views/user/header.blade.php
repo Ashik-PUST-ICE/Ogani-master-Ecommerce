@@ -8,7 +8,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                                <li><i class="fa fa-envelope"></i>ashik.200607@s.pust.ac.bd</li>
                                 <li>Free Shipping for all Order of $99</li>
                             </ul>
                         </div>
@@ -26,8 +26,8 @@
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a href="{{ url('/') }}">Bangla</a></li>
+                                    <li><a href="{{ url('/') }}">English</a></li>
                                 </ul>
                             </div>
                             <div class="header__top__right__auth" >

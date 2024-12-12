@@ -15,22 +15,22 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="{{ asset('img/categories/cat-2.jpg') }}">
-                            <h5><a href="#">Dried Fruit</a></h5>
+                            <h5><a href="{{ url('/') }}">Dried Fruit</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="{{ asset('img/categories/cat-3.jpg') }}">
-                            <h5><a href="#">Vegetables</a></h5>
+                            <h5><a href="{{ url('/') }}">Vegetables</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="{{ asset('img/categories/cat-4.jpg') }}">
-                            <h5><a href="#">drink fruits</a></h5>
+                            <h5><a href="{{ url('/') }}">drink fruits</a></h5>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="{{ asset('img/categories/cat-5.jpg') }}">
-                            <h5><a href="#">drink fruits</a></h5>
+                            <h5><a href="{{ url('/') }}">drink fruits</a></h5>
                         </div>
                     </div>
                 </div>
