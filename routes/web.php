@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Public routes
-Route::get('/', [HomeController::class, 'user'])->name('user.index');
+Route::get('/', [HomeController::class, 'user']);
 // Registration routes
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);
@@ -17,8 +17,9 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 // Authenticated routes
 Route::middleware(['auth', 'verified'])->group(function () {
     // User dashboard
-    Route::get('/', [HomeController::class, 'user'])->name('user.dashboard');
-
+    Route::get('/dashboard', [HomeController::class, 'login_user'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
     // Admin dashboard
     // Route::get('admin/dashboard', [HomeController::class, 'index'])
     //     ->middleware('admin')

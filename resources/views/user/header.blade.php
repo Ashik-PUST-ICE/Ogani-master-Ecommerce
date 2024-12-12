@@ -30,14 +30,30 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
-                            <div class="header__top__right__auth">
-                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-user"></i> Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
+                            <div class="header__top__right__auth" >
+                                @if (Route::has('login'))
+                                    @auth
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="fa fa-user"></i> Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    @else
+                                        <a href="{{ route('login') }}" >
+                                            <i class="fa fa-login"></i> Log in
+                                        </a>
+                                        <a href="{{ route('register') }}">
+                                            <i class="fa fa-register"></i> Register
+                                        </a>
+                                    @endauth
+                                @endif
                             </div>
+
+
+
+                        </div>
+
 
                         </div>
                     </div>
@@ -54,7 +70,7 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li class="active"><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="./shop-grid.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">

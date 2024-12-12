@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
             return redirect('admin/dashboard');
         }
 
-        return redirect()->view('user.index');
+        return redirect('/dashboard');
 
     }
 
@@ -46,6 +46,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('register');
+        return redirect('/');
     }
 }

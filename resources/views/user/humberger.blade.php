@@ -24,12 +24,22 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                @if (Route::has('login'))
+                    @auth
+                        <form class="ml-2" method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <input class="btn btn-danger" type="submit" value="Logout">
+                        </form>
+                    @else
+                        <li><a href="{{ route('login') }}"><i class="fa fa-login"></i>Log in</a></li>
+                        <li><a href="{{ route('register') }}"><i class="fa fa-register"></i>Register</a></li>
+                    @endauth
+                @endif
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
+                <li class="active"><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="./shop-grid.html">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
