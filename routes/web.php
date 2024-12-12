@@ -20,6 +20,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'login_user'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+    Route::get('/shop', [HomeController::class, 'shop'])
+    ->middleware(['auth', 'verified']);
+
     // Admin dashboard
     // Route::get('admin/dashboard', [HomeController::class, 'index'])
     //     ->middleware('admin')

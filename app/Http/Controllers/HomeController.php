@@ -66,4 +66,28 @@ class HomeController extends Controller
 
             return view('user.index',compact('products','data','count'));
         }
+
+        public function shop()
+        {
+            // Fetch all products
+            $products = Product::all();
+            $data = Category::all();
+            // You can adjust this if you want the latest products
+
+            // Initialize cart count variable
+            $count = 0;
+
+            // Check if the user is authenticated
+            if (Auth::check()) {
+                $user = Auth::user();
+                $userid = $user->id;
+
+                // Count the items in the cart for the authenticated user
+                $count = Cart::where('user_id', $userid)->count();
+            }
+
+            // Return the shop view with products and cart count
+            return view('user.shop', compact('products', 'data','count'));
+        }
+
 }

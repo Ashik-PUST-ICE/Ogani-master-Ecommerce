@@ -81,6 +81,8 @@ public function upload_product( Request $request)
 {
  $data=new Product;
  $data->title= $request->title;
+ $data->price= $request->price;
+
  $data->description= $request->description;
  $data->quantity= $request->qty;
  $data->category= $request->category;

@@ -23,16 +23,22 @@
                     <li><a href="#">English</a></li>
                 </ul>
             </div>
-            <div class="header__top__right__auth">
+            <div class="header__top__right__auth" >
                 @if (Route::has('login'))
                     @auth
-                        <form class="ml-2" method="POST" action="{{ route('logout') }}">
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa fa-user"></i> Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                            <input class="btn btn-danger" type="submit" value="Logout">
                         </form>
                     @else
-                        <li><a href="{{ route('login') }}"><i class="fa fa-login"></i>Log in</a></li>
-                        <li><a href="{{ route('register') }}"><i class="fa fa-register"></i>Register</a></li>
+                        <a href="{{ route('login') }}" >
+                            <i class="fa fa-user"></i> Login
+                        </a>
+                        <a href="{{ route('register') }}">
+                            <i class="fa fa-user"></i> Register
+                        </a>
                     @endauth
                 @endif
             </div>

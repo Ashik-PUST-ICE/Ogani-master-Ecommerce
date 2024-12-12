@@ -40,12 +40,12 @@
                                             @csrf
                                         </form>
                                     @else
-                                        <a href="{{ route('login') }}" >
-                                            <i class="fa fa-login"></i> Log in
-                                        </a>
-                                        <a href="{{ route('register') }}">
-                                            <i class="fa fa-register"></i> Register
-                                        </a>
+                                    <a href="{{ route('login') }}" >
+                                        <i class="fa fa-user"></i> Login
+                                    </a>
+                                    <a href="{{ route('register') }}">
+                                        <i class="fa fa-user"></i> Register
+                                    </a>
                                     @endauth
                                 @endif
                             </div>
@@ -71,7 +71,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li><a href="{{ url('/shop') }}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
