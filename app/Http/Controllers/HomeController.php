@@ -10,6 +10,7 @@ use Flasher\Laravel\Facade\Flasher;
 
 
 use Illuminate\Http\Request;
+use App\Models\Category; // Import the Category model
 
 class HomeController extends Controller
 {
@@ -35,7 +36,9 @@ class HomeController extends Controller
 
         public function user()
         {
-            return view('user.dashboard'); // Ensure this view exists
-        }
+            $data = Category::all();
+            return view('user.index',compact('data'));
+        }// Ensure this view exists
+
 
 }

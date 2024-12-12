@@ -9,8 +9,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Public routes
-Route::get('/', [HomeController::class, 'user'])->name('user.dashboard');
-
+Route::get('/', [HomeController::class, 'user'])->name('user.index');
 // Registration routes
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);
@@ -77,6 +76,6 @@ Route::get('view_product', [AdminController::class, 'view_product'])
 
 
 
-Route::get('/index', [UserController::class, 'index'])->name('user.index');
+
 
 require __DIR__.'/auth.php';
