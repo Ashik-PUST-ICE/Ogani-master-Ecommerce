@@ -89,5 +89,71 @@ class HomeController extends Controller
             // Return the shop view with products and cart count
             return view('user.shop', compact('products', 'data','count'));
         }
+        public function add_cart($id)
+        {
+            //    return view('home.add_cart');
+
+            $product_id=$id;
+            $user= Auth::user();
+            $user_id= $user->id;
+
+            $data = new Cart;
+
+            $data->user_id=$user_id;
+
+            $data->product_id=$product_id;
+
+            $data->save();
+
+
+           Flasher::addSuccess('Add to Cart Successfully.', ['timeout' => 1000]); // 3000ms = 3 seconds
+
+            return redirect()->back();
+
+
+        }
+        public function mycart()
+    {
+        $cart = [];
+        $count = 0;
+
+        if (Auth::check()) { // Check if user is authenticated
+            $user = Auth::user();
+            $userid = $user->id;
+
+            // Get the user's cart items and count
+            $cart = Cart::where('user_id', $userid)->get();
+            $count = $cart->count();
+        } else {
+            // Redirect to login if user is not authenticated
+            return redirect()->route('login')->with('error', 'Please login to view your cart.');
+        }
+
+
+        return view('user.mycart', compact('count', 'cart'));
+    }
+
+    public function removeItem($id)
+    {
+        $cartItem = Cart::findOrFail($id);
+
+        // Ensure user is authenticated
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Please log in to manage your cart.');
+        }
+
+        // Ensure that the item belongs to the authenticated user
+        if ($cartItem->user_id != Auth::id()) {
+            return redirect()->back()->with('error', 'You are not authorized to remove this item.');
+        }
+
+        // Remove the item
+        $cartItem->delete();
+
+        Flasher::addSuccess('Remove Successfully.', ['timeout' => 1000]); // 3000ms = 3 seconds
+
+
+        return redirect()->back();
+    }
 
 }
