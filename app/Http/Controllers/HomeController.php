@@ -106,7 +106,7 @@ class HomeController extends Controller
             $data->save();
 
 
-           Flasher::addSuccess('Add to Cart Successfully.', ['timeout' => 1000]); // 3000ms = 3 seconds
+           Flasher::addSuccess('Add to Cart Successfully.', ['timeout' => 2000]); // 3000ms = 3 seconds
 
             return redirect()->back();
 
@@ -116,6 +116,8 @@ class HomeController extends Controller
     {
         $cart = [];
         $count = 0;
+        $data = Category::all();
+        // $data = Category::all();
 
         if (Auth::check()) { // Check if user is authenticated
             $user = Auth::user();
@@ -130,12 +132,13 @@ class HomeController extends Controller
         }
 
 
-        return view('user.mycart', compact('count', 'cart'));
+        return view('user.mycart', compact('count','data','cart'));
     }
 
     public function removeItem($id)
     {
         $cartItem = Cart::findOrFail($id);
+
 
         // Ensure user is authenticated
         if (!Auth::check()) {
@@ -150,10 +153,32 @@ class HomeController extends Controller
         // Remove the item
         $cartItem->delete();
 
-        Flasher::addSuccess('Remove Successfully.', ['timeout' => 1000]); // 3000ms = 3 seconds
+        Flasher::addSuccess('Remove Successfully.', ['timeout' => 2000]); // 3000ms = 3 seconds
 
 
         return redirect()->back();
     }
+
+    public function product_details($id)
+    {
+
+        $products= Product :: find($id);
+        $data = Category::all();
+
+
+
+        $user = Auth:: user();
+
+        if ($user) { // Check if user is authenticated
+            $userid = $user->id;
+
+            // Corrected the way to query the Cart model
+            $count = Cart::where('user_id', $userid)->count();
+        } else {
+            $count = 0; // Handle the case when no user is authenticated
+        }
+        return view('user.product_details',compact('data','products','count'));
+    }
+
 
 }

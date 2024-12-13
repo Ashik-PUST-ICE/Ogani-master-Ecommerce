@@ -90,6 +90,13 @@ Route::get('view_product', [AdminController::class, 'view_product'])
 
     Route::delete('/remove-cart/{id}', [HomeController::class, 'removeItem'])->name('remove_cart');
 
+    Route::get('product_search', [AdminController::class, 'product_search'])
+    ->middleware(['auth', 'admin']);
+
+
+    Route::get('product_details/{id}', [HomeController::class, 'product_details']);
+
+
 
 
 
