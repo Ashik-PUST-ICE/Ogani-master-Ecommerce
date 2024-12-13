@@ -96,8 +96,14 @@ Route::get('view_product', [AdminController::class, 'view_product'])
 
     Route::get('product_details/{id}', [HomeController::class, 'product_details']);
 
+    Route::post('confirm_order', [HomeController::class, 'confirm_order'])
+    ->middleware(['auth', 'verified']);
 
+    // Route::get('confirm_order', [HomeController::class, 'confirm_order'])
+    // ->middleware(['auth', 'verified']);
 
+    Route::get('checkout', [HomeController::class, 'checkout'])
+    ->middleware(['auth', 'verified']);
 
 
 

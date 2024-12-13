@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="row">
-           
+
             <div class="col-lg-6">
                 <div class="shoping__continue">
                     <div class="shoping__discount">
@@ -60,7 +60,7 @@
                         <li>Subtotal: <span>$454.98</span></li>
                         <li>Total Value of Cart: <span>${{ number_format($value, 2) }}</span></li>
                     </ul>
-                    <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    <a href="{{ url('checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>
             </div>
         </div>

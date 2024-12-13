@@ -76,7 +76,7 @@
                                 <ul class="header__menu__dropdown">
 
                                     <li><a href="{{ url('mycart') }}">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="{{ url('checkout') }}">Check Out</a></li>
                                     <li><a href="{{ url('product_details') }}">Blog Details</a></li>
                                     <li><a href="">About Me</a></li>
                                 </ul>
