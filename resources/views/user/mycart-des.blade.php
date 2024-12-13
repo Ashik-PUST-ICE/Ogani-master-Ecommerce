@@ -23,7 +23,7 @@
                                     ${{ number_format($cartItem->product->price, 2) }}
                                 </td>
                                 <td class="shoping__cart__image">
-                                    <img src="/products/{{ $cartItem->product->image }}" alt="{{ $cartItem->product->title }}" style="width: 100px; height: auto;">
+                                    <img src="/products/{{ $cartItem->product->image }}" alt="{{ $cartItem->product->title }}" >
                                 </td>
                                 <td class="shoping__cart__item__close">
                                     <form action="{{ route('remove_cart', $cartItem->id) }}" method="POST">
@@ -41,12 +41,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="shoping__cart__btns">
-                    <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                    <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span> Update Cart</a>
-                </div>
-            </div>
+           
             <div class="col-lg-6">
                 <div class="shoping__continue">
                     <div class="shoping__discount">
