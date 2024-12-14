@@ -107,7 +107,24 @@ Route::get('view_product', [AdminController::class, 'view_product'])
     Route::get('checkout', [HomeController::class, 'checkout'])
     ->middleware(['auth', 'verified']);
 
+    Route::get('/myorders', [HomeController::class, 'myorders'])
+    ->middleware(['auth', 'verified']);
 
 
+
+    Route::get('view_order', [AdminController::class, 'view_order'])
+    ->middleware(['auth', 'admin']);
+
+
+    Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way'])
+    ->middleware(['auth', 'admin']);
+
+
+    Route::get('delivered/{id}', [AdminController::class, 'delivered'])
+    ->middleware(['auth', 'admin']);
+
+
+    Route::get('print_pdf/{id}', [AdminController::class, 'print_pdf'])
+    ->middleware(['auth', 'admin']);
 
 require __DIR__.'/auth.php';

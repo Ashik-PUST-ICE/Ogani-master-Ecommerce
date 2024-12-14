@@ -77,7 +77,8 @@
 
                                     <li><a href="{{ url('mycart') }}">Shoping Cart</a></li>
                                     <li><a href="{{ url('checkout') }}">Check Out</a></li>
-                                    <li><a href="{{ url('product_details') }}">Blog Details</a></li>
+                                    <li><a href="{{ url('product_details') }}">Product Details</a></li>
+                                    <li><a href="{{ url('/myorders') }}">My Order</a></li>
                                     <li><a href="">About Me</a></li>
                                 </ul>
                             </li>

@@ -250,5 +250,20 @@ public function confirm_order(Request $request)
 
     }
 
+    public function myorders()
+
+    {
+
+        $products = Product::all();
+        $cart = [];
+
+        $data = Category::all();
+        $user = Auth::user()->id;
+        $count=Cart::where('user_id',$user)->get()->count();
+
+        $order= Order::where('user_id',$user)->get();
+        return view('user.order',compact('count','order','data','cart','products'));
+    }
+
 
 }
