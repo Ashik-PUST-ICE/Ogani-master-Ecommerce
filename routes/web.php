@@ -127,4 +127,14 @@ Route::get('view_product', [AdminController::class, 'view_product'])
     Route::get('print_pdf/{id}', [AdminController::class, 'print_pdf'])
     ->middleware(['auth', 'admin']);
 
+
+
+Route::controller(HomeController::class)->group(function(){
+
+    Route::get('stripe/{value}', 'stripe');
+
+    Route::post('stripe/{value}', 'stripePost')->name('stripe.post');
+
+});
+
 require __DIR__.'/auth.php';

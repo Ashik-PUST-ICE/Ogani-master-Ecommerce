@@ -59,6 +59,7 @@
 
                                 <!-- Cash On Delivery Button -->
                                 <button type="submit" class="site-btn">Cash On Delivery</button>
+                                <a class="btn btn-success" href="{{ url('stripe', $value) }}">Pay Using Card</a>
                             </div>
                         </div>
                     </div>
