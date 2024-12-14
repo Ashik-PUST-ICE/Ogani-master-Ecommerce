@@ -181,37 +181,31 @@ class HomeController extends Controller
     }
 
     public function checkout()
-    {
-        // Fetch all categories
-        $data = Category::all();
-        $cart = [];
+{
+    $data = Category::all();
+    $cart = [];
         $count = 0;
 
-        // Check if user is authenticated
-        if (Auth::check()) {
+        if (Auth::check()) { // Check if user is authenticated
             $user = Auth::user();
             $userid = $user->id;
 
-            // Get the user's cart items
+            // Get the user's cart items and count
             $cart = Cart::where('user_id', $userid)->get();
             $count = $cart->count();
-
-            if ($count === 0) {
-                // Redirect if the cart is empty
-                return redirect()->route('shop')->with('error', 'Your cart is empty. Add products to proceed to checkout.');
-            }
         } else {
             // Redirect to login if user is not authenticated
             return redirect()->route('login')->with('error', 'Please login to view your cart.');
         }
 
-        // Return the checkout view
-        return view('user.checkout', compact('data', 'cart', 'count'));
-    }
+
+    return view('user.checkout', compact('data', 'cart', 'count'));
+}
 
 
 
-    public function confirm_order(Request $request)
+
+public function confirm_order(Request $request)
     {
         $name = $request->name;
 
