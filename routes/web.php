@@ -137,4 +137,7 @@ Route::controller(HomeController::class)->group(function(){
 
 });
 
+Route::get('products/category/{id}', [HomeController::class, 'filterByCategory']);
+Route::get('products/search', [HomeController::class, 'searchByKeyword']);
+
 require __DIR__.'/auth.php';

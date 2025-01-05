@@ -29,6 +29,8 @@ class HomeController extends Controller
 
         $order= Order::all()->count();
 
+        $categories = Category::all();
+
         $delivered= Order::where('status','Delivered')->get()->count();
 
 
@@ -36,8 +38,35 @@ class HomeController extends Controller
     }
 
 
+    public function filterByCategory($id)
+    {
+        $data = Category::all();
+        $categories = Category::all(); // For the sidebar
+        $count = Product::count(); // Count the total number of products
+        $products = Product::where('category_id', $id)->get(); // Fetch products of selected category
+        return view('user.product_page', compact('categories', 'products', 'count','data'));
+    }
+
+    public function searchByKeyword(Request $request)
+    {
+        $data = Category::all();
+        $count = Product::count(); // Count the total number of products
+        $categories = Category::all(); // For the sidebar
+        $query = $request->input('query'); // Get the search keyword
+        $products = Product::where('title', 'LIKE', "%$query%")
+                           ->orWhere('description', 'LIKE', "%$query%")
+                           ->get();
+        return view('user.product_page', compact('categories', 'products', 'count','data'));
+    }
+
+
+
+
         public function user()
-        {   $products = Product::all();
+        {
+
+
+            $products = Product::all();
             $data = Category::all();
             $count = 0;
             if (Auth::check()) { // Check if user is authenticated
@@ -346,6 +375,10 @@ public function confirm_order(Request $request)
 
 
     }
+
+
+
+
 
 
 }

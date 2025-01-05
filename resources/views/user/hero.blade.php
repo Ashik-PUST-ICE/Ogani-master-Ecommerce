@@ -11,22 +11,21 @@
                             <span>All Products List</span>
                         </div>
                         <ul>
-
                             @foreach($data as $category)
-                <li><a href="{{ url('/') }}">{{ $category->category_name }}</a></li>
-            @endforeach
+                                <li><a href="{{ url('products/category', $category->id) }}">{{ $category->category_name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form action="{{ url('products/search') }}" method="GET">
                                 <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" name="query" placeholder="What do you need?" class="form-control">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
